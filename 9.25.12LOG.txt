@@ -1,0 +1,7 @@
+(Turn word wrap ON) We had time in remote class to work on the Spike exercise so I took this time to get a good start. 
+
+In the time given and some after I got my RhoMobile updated to 2.1. During the install time I also created and started a github account to keep track of my code each day I work on it. It turned out that there was a windows program already avialable to allow this to be even easier. The program tracks one of my folders and allowed me to commit changes to github. Its advertised on their site.
+
+As far as development goes, I started with a test app. I tried to run it but kept getting errors. It turned out to be a run time configuration issue which switching it to the proper one allowed the app to run without issue. Now I just need to plan for what I want the app to look like and how to keep an online storage of user accounts.
+
+I attemped to test on my device using eclipse to load the apk on my test phone. It didn't go as planned. Eclipse couldn't seem to find my phone even with it plugged in and in debug mode. I tried to see if a SDK was missing which there was. After installing it still didn't work. So I decided to end that for now since one, I dont need testing right this second and two, I could always load the apk manually.

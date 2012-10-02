@@ -1,24 +1,25 @@
 #sdk: "C:/MotorolaRhoMobileSuite2.1.1.7/ruby/lib/ruby/gems/1.9.1/gems/rhodes-3.4.2"
-sdkversion: 3.4.0
-name: RhoMobileTestApp
+sdkversion: "3.4.0"
+name: "RhoMobileTestApp"
 version: 1.0
-vendor: rhomobile
-build: debug
+vendor: "rhomobile"
+build: "debug"
 bbver: 4.6
-applog: rholog.txt
+applog: "rholog.txt"
 iphone:
-  configuration: Release
-  sdk: iphonesimulator5.0
-  provisionprofile:
-  codesignidentity:
-  entitlements:
-  BundleIdentifier: com.rhomobile.rhomobiletestapp
-  BundleURLScheme: rhomobiletestapp
+  configuration: "Release"
+  sdk: "iphonesimulator5.0"
+  provisionprofile: 
+  codesignidentity: 
+  entitlements: 
+  BundleIdentifier: "com.rhomobile.rhomobiletestapp"
+  BundleURLScheme: "rhomobiletestapp"
 wp:
-  productid: '63e06210-e966-012f-d2c4-74de2b3fbcf4'
+  productid: "63e06210-e966-012f-d2c4-74de2b3fbcf4"
 symbian:
-  uid: '0xee20a884'
+  uid: "0xee20a884"
 android:
   version: 2.1
-
-extensions: ["json", "another-extension"]
+extensions:
+  - json
+  - another-extension
