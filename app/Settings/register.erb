@@ -1,0 +1,29 @@
+<div data-role="page" data-add-back-btn="true">
+
+  <div data-role="header" data-position="inline">
+    <h1>Login</h1>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :do_register %>">
+      <% if @msg %>
+          <div class="error-message"><%= @msg %></div>
+      <% end %>
+
+      <div data-role="fieldcontain">
+        <label for="username" class="itemLabel">Username</label>
+        <input type="text" id="username" name="username" class="itemValue" <%= placeholder("username") %> />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="itemValue" <%= placeholder("Password") %> />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="passwordverify">Verify Password</label>
+        <input type="password" id="passwordverify" name="passwordverify" class="itemValue" <%= placeholder("Password") %> />
+      </div>
+      <input type="submit" value="Register"/>
+    </form>
+  </div>
+
+</div>

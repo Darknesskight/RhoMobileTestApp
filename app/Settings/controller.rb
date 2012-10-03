@@ -35,15 +35,61 @@ class SettingsController < Rho::RhoController
     end  
   end
 
+  
+  def do_register
+      if @params['username'] and @params['password'] and @params['passwordverify']
+        begin
+          if Dir.glob(@params['username'] + ".txt").empty?
+            begin
+              if(not( @params['passwordverify'] == @params['password']))
+                begin
+                  @msg = "Password did not math"
+                  render :action => :register 
+                end
+              else
+                File.open(@params['username'] + ".txt" , "w") do |f1|
+                  begin
+                    f1.write(@params['password'])
+                  end  
+                  @msg = "You have made a new account. Please Login"
+                  render :action => :login
+                end
+              end
+            end
+          else
+            @msg = "Username already exists, Chose a different one"
+            render :action => :register 
+          end
+        end
+      else
+        @msg = Rho::RhoError.err_message(Rho::RhoError::ERR_UNATHORIZED) unless @msg && @msg.length > 0
+        render :action => :login
+      end
+    end
+  
   def do_login
     if @params['login'] and @params['password']
       begin
-        SyncEngine.login(@params['login'], @params['password'], (url_for :action => :login_callback) )
-        @response['headers']['Wait-Page'] = 'true'
-        render :action => :wait
-      rescue Rho::RhoError => e
-        @msg = e.message
-        render :action => :login
+        if Dir.glob(@params['login'] + ".txt").empty?
+          begin
+            @msg = "Username or password is incorrect"
+            render :action => :login
+          end
+        else
+          File.open(@params['login'] + ".txt" , "r") do |f1|
+            if(f1.gets  == @params['password'])
+              begin
+              @msg = "Welcome Back"
+              render :action => :index
+            end
+            else
+              @msg = "Username or password is incorrect"
+              render :action => :login
+              end
+          end
+         
+            
+        end
       end
     else
       @msg = Rho::RhoError.err_message(Rho::RhoError::ERR_UNATHORIZED) unless @msg && @msg.length > 0
