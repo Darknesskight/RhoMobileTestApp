@@ -5,12 +5,38 @@ require 'helpers/browser_helper'
 
 class SettingsController < Rho::RhoController
   include BrowserHelper
-  
+  $loginName;
   def index
     @msg = @params['msg']
     render
   end
 
+  def do_name
+    File.open("current.txt" , "r") do |f1|
+      return f1.gets
+    end
+    return $loginName
+  end
+  def add_interest
+    if @params['interest']
+      File.open(do_name + "\interests.txt" , "a") do |f1|
+                f1.write(@params['interest'] + "\n")
+    end
+      render :action => :index
+        end
+    
+  end
+  def do_interests
+    returnValue = ""
+    temp = ""
+    File.open(do_name + "\interests.txt", "r") do |line|
+      while(temp = line.gets)
+        returnValue += "<li><class=\"ui-li-icon\">" + temp + "</li>"
+      end
+     
+    end
+    return returnValue
+  end
   def login
     @msg = @params['msg']
     render :action => :login
@@ -50,7 +76,16 @@ class SettingsController < Rho::RhoController
                 File.open(@params['username'] + ".txt" , "w") do |f1|
                   begin
                     f1.write(@params['password'])
-                  end  
+                  end
+                  Dir::mkdir(@params['username']) unless File.exists?(@params['username'])
+                    begin
+                      
+                    end
+                  end
+                  File.open(@params['username'] + "\interests.txt" , "w") do |f1|
+                  begin
+                           f1.write("Mingle\n");
+                  end
                   @msg = "You have made a new account. Please Login"
                   render :action => :login
                 end
@@ -79,7 +114,12 @@ class SettingsController < Rho::RhoController
           File.open(@params['login'] + ".txt" , "r") do |f1|
             if(f1.gets  == @params['password'])
               begin
-              @msg = "Welcome Back"
+                loginName = @params['login']
+                File.open("current.txt" , "w") do |f2|
+                  f2.truncate(0)
+                  f2.write(@params['login'])
+                end
+              @msg = "Welcome Back " + loginName
               render :action => :index
             end
             else
@@ -98,7 +138,6 @@ class SettingsController < Rho::RhoController
   end
   
   def logout
-    SyncEngine.logout
     @msg = "You have been logged out."
     render :action => :login
   end

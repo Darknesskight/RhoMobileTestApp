@@ -1,0 +1,17 @@
+(use word wrap) This is the last log for this project.
+
+Phone test was mostly a success though the header did not fit in 1 orientation due to small phone size. No noteable issues occured
+
+very rough icon and loading wallpaper now in place. Biggest part of this development day was getting the profile page to be more functional. You can now logout from the profile page (though those buttons at the bottom let you get back in. Not sure how to remove yet) Logout takes you back to the login page. Directories now create for each new user to hold their information. Currently only their interests. 
+
+Source from last comment: http://suzuki-programmer.blogspot.com/2008/03/way-to-make-directory-with-ruby.html
+
+Current user is now saved in current.txt. Changes on each login. Took much longer than needed to get that helper working.. ended up taking a guess which ended up working funny enough. Helper is used in 2 newly made definitions as well as for their profile name on the profile page.
+
+By far the most time consuming task was getting the interests to be displayed. I ended up chasing a bug for hours not realizing that the errors was because of a mistype. The users interests are saved in their folder in a file called interest.txt The get name helper is used here to know which folder to pick from. interest.txt is initalized during account creation and only contains Mingle for debug purposes. A ruby definition was made to open said file and place its values onto the profile inside <li> tags to put them into a list.
+
+As a final feature I tried to incorperate adding to the interests. Though none can be removed, you can keep adding onto them. Saves them to the user's interest.txt as a seperate line. I was hoping to get removing them done as well but my schedule for mon and wed don't allow let me start on hw till about 7pm or so.
+
+Project was renamed to be RUMingle so it would be called RUMingle on the phone. It'll be uploaded to my github along with this log.
+
+I may continue working on this afterwards to get more practice out before the real coding begins. I do feel more comfortable working with ruby on rails now and RhoStudio which should allow for the iterations to go smoother. 
